@@ -55,7 +55,12 @@
 										<td th:text="${client.prenom}"></td>
 										<td th:text="${client.adress}"></td>
 										<td th:text="${client.mobile}"></td>
-										<td></td>
+										<td>
+											<a class="text-info mr-3 font-16" href="javascript:;"><i class="ti-eye"></i></a>	
+											<a class="text-primary mr-3 font-16" href="javascript:;"><i class="ti-pencil"></i></a>
+                                            <a class="text-danger mr-3 font-16"  th:href="@{clients/delete/{id}(id=${client.id})}"  href="javascript:;"><i class="ti-trash ti-3x"></i></a>
+												 
+											</td>
 
 						</tr>
 						
