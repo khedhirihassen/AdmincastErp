@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	data-layout-decorate="~{layout}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Clients</title>
@@ -31,7 +31,7 @@
 			</div>
 			<div class="ibox-body">
 				<a class="btn btn-rounded btn-primary btn-air"
-					href="ecommerce_add_product.html">Ajouter Client</a> <br></br>
+					th:href="@{clients/addClient}">Ajouter Client</a> <br></br>
 				<table class="table table-striped table-bordered table-hover"
 					id="example-table" cellspacing="0" width="100%">
 					<thead>
@@ -66,7 +66,7 @@
 								href="javascript:;" data-toggle="modal" data-target="#myModal"
 								th:attrappend="data-target=${client.id}"><i class="ti-eye"></i></a>
 
-								<!--#Modal form for user update--> <!-- Modal -->
+								<!--#Modal form for user View--> <!-- Modal -->
 								
 								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" 
 								aria-hidden="true" th:attrappend="id=${client.id}">
@@ -140,10 +140,103 @@
 										</div>
 									</div>
 								</div>
+								<!--End view form--> 
+								
+								<a class="text-primary mr-3 font-16" th:href="@{clients/edit/{id}(id=${client.id})}"
+								href="javascript:;"><i class="ti-pencil"></i></a>
+								
+								<!--
+								<a class="text-primary mr-3 font-16"
+								href="javascript:;"   data-toggle="modal" data-target="#myModalUpdate"
+								th:attrappend="data-target=${client.id}"><i class="ti-pencil"></i></a>
+								-->
+								<!--#Modal form for user update--> <!-- Modal -->
+								
+								<div class="modal fade" id="myModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" 
+								aria-hidden="true" th:attrappend="id=${client.id}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Information Client</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+											
+											<form class="form-horizontal" action="#" th:action="@{/clients/update/{id}(id=${client.id})}" th:object="${client}" method="post">
+													<fieldset>
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="nom">Nom</label>
+															<div class="col-md-6">
+																<input id="nom" name="nom" type="text" placeholder="nom"
+																	 class="form-control input-md"
+																	th:value="${client.nom}" />
+															</div>
+														</div>
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="prenom">Prenom
+															</label>
+															<div class="col-md-6">
+																<input id="prenom" name="prenom"
+																	type="text" placeholder="prenom"
+																	class="form-control input-md"
+																	th:value="${client.prenom}" />
+															</div>
+														</div>
+
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="adress">Adress</label>
+															<div class="col-md-6">
+																<input id="adress" name="adress" type="text"
+																 placeholder="adress"
+																	class="form-control input-md"
+																	th:value="${client.adress}" />
+															</div>
+														</div>
+
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="mobile">Mobile</label>
+															<div class="col-md-6">
+																<input id="mobile" name="mobile" type="text"
+																	placeholder="mobile"
+																	class="form-control input-md"
+																	th:value="${client.mobile}" />
+															</div>
+														</div>
+
+													</fieldset>
+												</form>
+											
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+												<button id="send" type="submit" class="btn btn-primary btn-air mr-2">Submit</button>
+                               
+											</div>
+										</div>
+									</div>
+								</div>
 								<!--End update form--> 
 								
-								<a class="text-primary mr-3 font-16"
-								href="javascript:;"><i class="ti-pencil"></i></a>
+								
+								
+								
+								
+								
+								
+								
+								
+								
 								
 								<a class="text-danger mr-3 font-16"
 								th:href="@{clients/delete/{id}(id=${client.id})}"
