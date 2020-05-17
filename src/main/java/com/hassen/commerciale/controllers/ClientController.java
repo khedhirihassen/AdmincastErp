@@ -62,11 +62,8 @@ public class ClientController {
 		}
 
 		clientService.update(client);
-		//model.addAttribute("clients", clientService.getAllClients());
 		return "redirect:/clients";
 	}
-
-	
 	
 
 	@GetMapping("/delete/{id}")

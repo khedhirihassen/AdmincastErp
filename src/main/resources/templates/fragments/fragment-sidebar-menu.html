@@ -1,10 +1,11 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
  <div id="navbar" data-th-fragment="navbar">
 <nav class="page-sidebar" id="sidebar">
 	<div id="sidebar-collapse">
 	
 		<div class="admin-block d-flex">
 			<div>
-				<img src="img/admin-avatar.png" width="45px" />
+				<img src="img/admin-avatar.png" th:src="@{/img/admin-avatar.png}" width="45px" />
 			</div>
 			<div class="admin-info">
 				<div class="font-strong">James Brown</div>
@@ -116,3 +117,4 @@
 
 </nav>
 </div>
+</html>
