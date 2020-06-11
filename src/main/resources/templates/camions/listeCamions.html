@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Camions</title>
+
+
+</head>
+
+<body>
+	<!-- START PAGE CONTENT-->
+	<div class="page-content fade-in-up" data-layout-fragment="content">
+		
+		<div class="page-heading">
+                <h1 class="page-title">Camions</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/}"><i class="ti-home font-20"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">Commercial</li>
+                    <li class="breadcrumb-item">Camions</li>
+                </ol>
+         </div>
+            
+		<br></br>
+		
+		<div class="ibox">
+			<div class="ibox-head">
+				<div class="ibox-title">Liste Camions</div>
+			</div>
+			<div class="ibox-body">
+				<a class="btn btn-rounded btn-primary btn-air"
+					th:href="@{camions/addCamion}">Ajouter Camion</a> <br></br>
+				<table class="table table-striped table-bordered table-hover"
+					id="example-table" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>Matricule</th>
+							<th>Marque</th>
+							<th>Age</th>
+							<th width="125px">Option</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Matricule</th>
+							<th>Marque</th>
+							<th>Age</th>
+							<th width="125px">Option</th>
+						</tr>
+					</tfoot>
+					<tbody>
+
+
+						<tr th:each="camion : ${camions}">
+							<td th:text="${camion.matricule}"></td>
+							<td th:text="${camion.marque}"></td>
+							<td th:text="${camion.age}"></td>
+							<td>
+							
+							<a class="text-info mr-3 font-16 vBtn"
+								href="javascript:;" data-toggle="modal" data-target="#myModal"
+								th:attrappend="data-target=${camion.id}"><i class="ti-eye"></i></a>
+								
+							<a class="text-primary mr-3 font-16" th:href="@{camions/edit/{id}(id=${camion.id})}"
+								href="javascript:;"><i class="ti-pencil"></i></a>
+								
+							<a class="text-danger mr-3 font-16"
+								th:href="@{camions/delete/{id}(id=${camion.id})}"
+								href="javascript:;" onclick="return confirm('Êtes-vous sûr de supprimer cet élément?');">
+								<i class="ti-trash ti-3x"></i></a>
+
+								<!--#Modal form for user View--> <!-- Modal -->
+								
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" 
+								aria-hidden="true" th:attrappend="id=${camion.id}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Information Camion</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+											
+											<form class="form-horizontal" action="#" method="post">
+													<fieldset>
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="matricule">Matricule</label>
+															<div class="col-md-6">
+																<input id="matricule" name="matricule" type="text" placeholder="matricule"
+																	disabled="disabled" class="form-control input-md"
+																	th:value="${camion.matricule}" />
+															</div>
+														</div>
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="Marque">Marque
+															</label>
+															<div class="col-md-6">
+																<input id="marque" name="marque" disabled="disabled"
+																	type="text" placeholder="marque"
+																	class="form-control input-md"
+																	th:value="${camion.marque}" />
+															</div>
+														</div>
+
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="age">Age</label>
+															<div class="col-md-6">
+																<input id="age" name="age" type="text"
+																	disabled="disabled" placeholder="age"
+																	class="form-control input-md"
+																	th:value="${camion.age}" />
+															</div>
+														</div>
+
+													</fieldset>
+												</form>
+											
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--End view form--> 
+								
+						</td>
+						</tr>
+
+
+
+
+					</tbody>
+				</table>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+</body>
+</html>

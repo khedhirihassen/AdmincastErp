@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Camions</title>
+
+
+</head>
+
+<body>
+	<!-- START PAGE CONTENT-->
+	<div class="page-content fade-in-up" data-layout-fragment="content">
+
+		<div class="page-heading">
+			<h1 class="page-title">Camions</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}"><i
+						class="ti-home font-20"></i></a></li>
+				<li class="breadcrumb-item">Commercial</li>
+				<li class="breadcrumb-item"><a th:href="@{/camions}">Camions</a></li>
+			</ol>
+		</div>
+
+		<br></br>
+
+		<div class="ibox">
+
+			<div class="ibox-head">
+				<div class="ibox-title">Ajouter nouveau Camion</div>
+			</div>
+
+			<div class="ibox-body">
+				<form class="form-horizontal" id="form-sample-1"
+					novalidate="novalidate" action="#" th:action="@{/camions/add}"
+					th:object="${camion}" method="post">
+					<div class="form-group row">
+
+						<label class="col-sm-2 col-form-label">Matricule</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{matricule}" class="form-control"
+								id="matricule" placeholder="Matricule" required="true"> <span
+								th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}"
+								class="text-danger"></span>
+
+						</div>
+
+					</div>
+				
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Marque</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{marque}" class="form-control"
+								id="marque" placeholder="marque" required="true"> <span
+								th:if="${#fields.hasErrors('marque')}" th:errors="*{marque}"
+								class="text-danger"></span>
+						</div>
+						
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Adress</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{age}" class="form-control"
+								id="age" placeholder="Age" required="true" > <span
+								th:if="${#fields.hasErrors('age')}" th:errors="*{age}"
+								class="text-danger"></span>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-6 ml-sm-auto">
+							<div class="text-right">
+								<button id="send" type="submit"
+									class="btn btn-primary btn-air mr-2">Submit</button>
+								<a th:href="@{/camions}" class="btn btn-secondary">Cancel</a>	
+
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>
