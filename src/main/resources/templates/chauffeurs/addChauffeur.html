@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Chauffeurs</title>
+   
+
+</head>
+
+<body>
+	<!-- START PAGE CONTENT-->
+	<div class="page-content fade-in-up" data-layout-fragment="content">
+
+		<div class="page-heading">
+			<h1 class="page-title">Chauffeurs</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}"><i
+						class="ti-home font-20"></i></a></li>
+				<li class="breadcrumb-item">Commercial</li>
+				<li class="breadcrumb-item"><a th:href="@{/chauffeurs}">Chauffeurs</a></li>
+			</ol>
+		</div>
+
+		<br></br>
+
+		<div class="ibox">
+
+			<div class="ibox-head">
+				<div class="ibox-title">Ajouter nouveau Chauffeur</div>
+			</div>
+
+			<div class="ibox-body">
+				<form class="form-horizontal" id="form-sample-1"
+					novalidate="novalidate" action="#" th:action="@{/chauffeurs/add}"
+					th:object="${chauffeur}" method="post">
+					<div class="form-group row">
+
+						<label class="col-sm-2 col-form-label">Nom</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nom}" class="form-control"
+								id="nom" placeholder="Nom" required="true"> <span
+								th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"
+								class="text-danger"></span>
+
+						</div>
+
+					</div>
+				
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Prenom</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{prenom}" class="form-control"
+								id="prenom" placeholder="Prenom" required="true"> <span
+								th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"
+								class="text-danger"></span>
+						</div>
+						
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">N° Permis</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{permis}" class="form-control"
+								id="permis" placeholder="permis" required="true" > <span
+								th:if="${#fields.hasErrors('permis')}" th:errors="*{permis}"
+								class="text-danger"></span>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Type Permis</label>
+						<div class="col-sm-6">
+							 <select class="form-control select2_demo_1" th:field="*{typePermis}">
+							 	<option th:each="t : ${listTypePermis}" th:value="${t}" th:text="${t}" />
+                             </select>
+						</div>
+					</div>
+					
+					<div class="form-group row" id="date_1">
+                         <label class="col-sm-2 col-form-label">Date Obtenation</label>
+                          <div class="col-sm-6 input-group date">
+                          <span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
+                          <input class="form-control" type="text" th:field="*{dateObtention}" >
+                          <span
+								th:if="${#fields.hasErrors('dateObtention')}" th:errors="*{dateObtention}"
+								class="text-danger"></span>
+                          </div>
+                    </div>
+
+					<div class="form-group row">
+						<div class="col-sm-6 ml-sm-auto">
+							<div class="text-right">
+								<button id="send" type="submit"
+									class="btn btn-primary btn-air mr-2">Submit</button>
+								<a th:href="@{/chauffeurs}" class="btn btn-secondary">Cancel</a>	
+
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

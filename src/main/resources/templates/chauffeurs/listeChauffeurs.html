@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Chauffeurs</title>
+
+
+</head>
+
+<body>
+	<!-- START PAGE CONTENT-->
+	<div class="page-content fade-in-up" data-layout-fragment="content">
+		
+		<div class="page-heading">
+                <h1 class="page-title">Chauffeurs</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/}"><i class="ti-home font-20"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">Commercial</li>
+                    <li class="breadcrumb-item">Chauffeurs</li>
+                </ol>
+         </div>
+            
+		<br></br>
+		
+		<div class="ibox">
+			<div class="ibox-head">
+				<div class="ibox-title">Liste Chauffeurs</div>
+			</div>
+			<div class="ibox-body">
+				<a class="btn btn-rounded btn-primary btn-air"
+					th:href="@{chauffeurs/addChauffeur}">Ajouter Chauffeur</a> <br></br>
+				<table class="table table-striped table-bordered table-hover"
+					id="example-table" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>N° Permis</th>
+							<th>Type Permis</th>
+							<th>Date Obtenation</th>
+							<th width="125px">Option</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>N° Permis</th>
+							<th>Type Permis</th>
+							<th>Date Obtenation</th>
+							<th width="125px">Option</th>
+						</tr>
+					</tfoot>
+					<tbody>
+
+
+						<tr th:each="chauffeur : ${chauffeurs}">
+							<td th:text="${chauffeur.nom}"></td>
+							<td th:text="${chauffeur.prenom}"></td>
+							<td th:text="${chauffeur.permis}"></td>
+							<td th:text="${chauffeur.typePermis}"></td>
+							<td th:text="${chauffeur.dateObtention}"></td>
+							<td>
+							
+							<a class="text-info mr-3 font-16 vBtn"
+								href="javascript:;" data-toggle="modal" data-target="#myModal"
+								th:attrappend="data-target=${chauffeur.id}"><i class="ti-eye"></i></a>
+								
+							<a class="text-primary mr-3 font-16" th:href="@{chauffeurs/edit/{id}(id=${chauffeur.id})}"
+								href="javascript:;"><i class="ti-pencil"></i></a>
+								
+							<a class="text-danger mr-3 font-16"
+								th:href="@{chauffeurs/delete/{id}(id=${chauffeur.id})}"
+								href="javascript:;" onclick="return confirm('Êtes-vous sûr de supprimer cet élément?');">
+								<i class="ti-trash ti-3x"></i></a>
+
+								<!--#Modal form for user View--> <!-- Modal -->
+								
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" 
+								aria-hidden="true" th:attrappend="id=${chauffeur.id}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Information Chauffeur</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+											
+											<form class="form-horizontal" action="#" method="post">
+													<fieldset>
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="nom">Nom</label>
+															<div class="col-md-6">
+																<input id="nom" name="nom" type="text" placeholder="nom"
+																	disabled="disabled" class="form-control input-md"
+																	th:value="${chauffeur.nom}" />
+															</div>
+														</div>
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="prenom">Prenom
+															</label>
+															<div class="col-md-6">
+																<input id="prenom" name="prenom" disabled="disabled"
+																	type="text" placeholder="prenom"
+																	class="form-control input-md"
+																	th:value="${chauffeur.prenom}" />
+															</div>
+														</div>
+
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="adress">N° Permis</label>
+															<div class="col-md-6">
+																<input id="permis" name="permis" type="text"
+																	disabled="disabled" placeholder="permis"
+																	class="form-control input-md"
+																	th:value="${chauffeur.permis}" />
+															</div>
+														</div>
+
+
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="mobile">Type Permis</label>
+															<div class="col-md-6">
+																<input id="typePermis" name="typePermis" type="text"
+																	disabled="disabled" placeholder="typePermis"
+																	class="form-control input-md"
+																	th:value="${chauffeur.typePermis}" />
+															</div>
+														</div>
+														
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="mobile">Date Obtenation</label>
+															<div class="col-md-6">
+																<input id="dateObtention" name="dateObtention" type="text"
+																	disabled="disabled" placeholder="dateObtention"
+																	class="form-control input-md"
+																	th:value="${chauffeur.dateObtention}" />
+															</div>
+														</div>
+
+													</fieldset>
+												</form>
+											
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--End view form--> 
+								
+						</td>
+						</tr>
+
+
+
+
+					</tbody>
+				</table>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+</body>
+</html>
