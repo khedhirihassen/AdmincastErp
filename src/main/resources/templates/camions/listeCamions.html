@@ -39,6 +39,7 @@ layout:decorate="~{layout}">
 							<th>Matricule</th>
 							<th>Marque</th>
 							<th>Age</th>
+							<th>Chauffeur</th>
 							<th width="125px">Option</th>
 						</tr>
 					</thead>
@@ -47,6 +48,7 @@ layout:decorate="~{layout}">
 							<th>Matricule</th>
 							<th>Marque</th>
 							<th>Age</th>
+							<th>Chauffeur</th>
 							<th width="125px">Option</th>
 						</tr>
 					</tfoot>
@@ -57,6 +59,7 @@ layout:decorate="~{layout}">
 							<td th:text="${camion.matricule}"></td>
 							<td th:text="${camion.marque}"></td>
 							<td th:text="${camion.age}"></td>
+							<td th:text="${camion.chauffeur.nom}"></td>
 							<td>
 							
 							<a class="text-info mr-3 font-16 vBtn"
@@ -119,6 +122,17 @@ layout:decorate="~{layout}">
 																	disabled="disabled" placeholder="age"
 																	class="form-control input-md"
 																	th:value="${camion.age}" />
+															</div>
+														</div>
+														
+														<!-- Text input-->
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="age">Chauffeur</label>
+															<div class="col-md-6">
+																<input id="chauffeur" name="chauffeur" type="text"
+																	disabled="disabled" placeholder="chauffeur"
+																	class="form-control input-md"
+																	th:value="${camion.chauffeur.nom}" />
 															</div>
 														</div>
 

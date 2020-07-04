@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -21,6 +22,9 @@ public class Camion {
 
 	@NotBlank
 	private String age;
+	
+	@ManyToOne
+	private Chauffeur chauffeur ;
 
 	public Camion() {
 		super();
@@ -59,6 +63,12 @@ public class Camion {
 		this.age = age;
 	}
 
-	
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
 
 }

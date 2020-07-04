@@ -1,11 +1,14 @@
 package com.hassen.commerciale.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 
@@ -31,6 +34,9 @@ public class Chauffeur {
 	
 	//@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date dateObtention ;
+	
+	@OneToMany (mappedBy = "chauffeur")
+	private List<Camion> chauffeursCamion = new ArrayList<Camion>();
 
 	public Chauffeur() {
 		super();
@@ -84,6 +90,15 @@ public class Chauffeur {
 	public void setDateObtention(Date dateObtention) {
 		this.dateObtention = dateObtention;
 	}
+
+	public List<Camion> getChauffeursCamion() {
+		return chauffeursCamion;
+	}
+
+	public void setChauffeursCamion(List<Camion> chauffeursCamion) {
+		this.chauffeursCamion = chauffeursCamion;
+	}
+	
 	
 	
 }

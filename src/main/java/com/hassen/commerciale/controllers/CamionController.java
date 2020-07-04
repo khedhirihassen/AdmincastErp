@@ -1,5 +1,7 @@
 package com.hassen.commerciale.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hassen.commerciale.entities.Camion;
+import com.hassen.commerciale.entities.Chauffeur;
 import com.hassen.commerciale.services.CamionService;
+import com.hassen.commerciale.services.ChauffeurService;
 
 @Controller
 @RequestMapping("camions")
@@ -20,6 +24,9 @@ public class CamionController {
 
 	@Autowired
 	private CamionService camionService ;
+	
+	@Autowired
+	private ChauffeurService chauffeurService;
 	
 	@GetMapping
 	public String showCamions(Model model) {
@@ -30,8 +37,9 @@ public class CamionController {
 	}
 	
 	@GetMapping("addCamion")
-    public String showAddForm(Camion camion) {
-		
+    public String showAddForm(Camion camion , Model model) {
+		List<Chauffeur> listChauffeurs = chauffeurService.getAllChauffeurs();
+		model.addAttribute("listChauffeurs",listChauffeurs);
 		return "camions/addCamion";
 
     }
@@ -50,6 +58,7 @@ public class CamionController {
 	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
 		Camion camion = camionService.getCamionById(id);
 		model.addAttribute("camion", camion);
+		model.addAttribute("listChauffeurs",chauffeurService.getAllChauffeurs());
 		return "camions/updateCamion";
 	}
 
