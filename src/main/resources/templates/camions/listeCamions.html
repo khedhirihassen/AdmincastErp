@@ -5,7 +5,7 @@ layout:decorate="~{layout}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Camions</title>
 <style type="text/css">
-    span {
+    span-view {
         display: inline-block;
         width: 200px;
         text-align: left;
@@ -97,10 +97,10 @@ layout:decorate="~{layout}">
 											
 											<div align="center">
 											    <h2>Détail Camion</h2>
-    											<span>Matricule : </span><span th:text="${camion.matricule}"></span><br/>
-    											<span>Marque : </span><span th:text="${camion.marque}"></span><br/>
-    											<span>Age : </span><span th:text="${camion.age}"></span><br/>
-    											<span>Chauffeur : </span><span th:text="${camion.chauffeur.nom}"></span><br/>
+    											<span-view>Matricule : </span-view><span-view th:text="${camion.matricule}"></span-view><br/>
+    											<span-view>Marque : </span-view><span-view th:text="${camion.marque}"></span-view><br/>
+    											<span-view>Age : </span-view><span-view th:text="${camion.age}"></span-view><br/>
+    											<span-view>Chauffeur : </span-view><span-view th:text="${camion.chauffeur.nom}"></span-view><br/>
 
 											</div>
 											

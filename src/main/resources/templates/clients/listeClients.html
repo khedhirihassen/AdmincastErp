@@ -5,7 +5,7 @@ layout:decorate="~{layout}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Clients</title>
 <style type="text/css">
-    span {
+    span-view {
         display: inline-block;
         width: 200px;
         text-align: left;
@@ -98,10 +98,10 @@ layout:decorate="~{layout}">
 											<div align="center">
 											
 											    <h2>Détail Client</h2>
-    											<span>Nom : </span><span th:text="${client.nom}"></span><br/>
-    											<span>Prenom : </span><span th:text="${client.prenom}"></span><br/>
-    											<span>Adress : </span><span th:text="${client.adress}"></span><br/>
-    											<span>Mobile : </span><span th:text="${client.mobile}"></span><br/>
+    											<span-view>Nom : </span-view><span-view th:text="${client.nom}"></span-view><br/>
+    											<span-view>Prenom : </span-view><span-view th:text="${client.prenom}"></span-view><br/>
+    											<span-view>Adress : </span-view><span-view th:text="${client.adress}"></span-view><br/>
+    											<span-view>Mobile : </span-view><span-view th:text="${client.mobile}"></span-view><br/>
 
 											</div>
 											
