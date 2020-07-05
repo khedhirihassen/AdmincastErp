@@ -4,7 +4,13 @@ layout:decorate="~{layout}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Chauffeurs</title>
-
+<style type="text/css">
+    span {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
 
 </head>
 
@@ -92,67 +98,16 @@ layout:decorate="~{layout}">
 											</div>
 											<div class="modal-body">
 											
-											<form class="form-horizontal" action="#" method="post">
-													<fieldset>
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="nom">Nom</label>
-															<div class="col-md-6">
-																<input id="nom" name="nom" type="text" placeholder="nom"
-																	disabled="disabled" class="form-control input-md"
-																	th:value="${chauffeur.nom}" />
-															</div>
-														</div>
+											<div align="center">
+											
+											    <h2>Détail Chauffeur</h2>
+    											<span>Nom : </span><span th:text="${chauffeur.nom}"></span><br/>
+    											<span>Prenom : </span><span th:text="${chauffeur.prenom}"></span><br/>
+    											<span>N° Permis : </span><span th:text="${chauffeur.permis}"></span><br/>
+    											<span>Type Permis : </span><span th:text="${chauffeur.typePermis}"></span><br/>
+    											<span>Date Obtenation : </span><span th:text="${chauffeur.dateObtention}"></span><br/>
 
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="prenom">Prenom
-															</label>
-															<div class="col-md-6">
-																<input id="prenom" name="prenom" disabled="disabled"
-																	type="text" placeholder="prenom"
-																	class="form-control input-md"
-																	th:value="${chauffeur.prenom}" />
-															</div>
-														</div>
-
-
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="adress">N° Permis</label>
-															<div class="col-md-6">
-																<input id="permis" name="permis" type="text"
-																	disabled="disabled" placeholder="permis"
-																	class="form-control input-md"
-																	th:value="${chauffeur.permis}" />
-															</div>
-														</div>
-
-
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="mobile">Type Permis</label>
-															<div class="col-md-6">
-																<input id="typePermis" name="typePermis" type="text"
-																	disabled="disabled" placeholder="typePermis"
-																	class="form-control input-md"
-																	th:value="${chauffeur.typePermis}" />
-															</div>
-														</div>
-														
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="mobile">Date Obtenation</label>
-															<div class="col-md-6">
-																<input id="dateObtention" name="dateObtention" type="text"
-																	disabled="disabled" placeholder="dateObtention"
-																	class="form-control input-md"
-																	th:value="${chauffeur.dateObtention}" />
-															</div>
-														</div>
-
-													</fieldset>
-												</form>
+											</div>
 											
 											</div>
 											<div class="modal-footer">

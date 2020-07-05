@@ -4,7 +4,13 @@ layout:decorate="~{layout}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Camions</title>
-
+<style type="text/css">
+    span {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
 
 </head>
 
@@ -89,55 +95,14 @@ layout:decorate="~{layout}">
 											</div>
 											<div class="modal-body">
 											
-											<form class="form-horizontal" action="#" method="post">
-													<fieldset>
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="matricule">Matricule</label>
-															<div class="col-md-6">
-																<input id="matricule" name="matricule" type="text" placeholder="matricule"
-																	disabled="disabled" class="form-control input-md"
-																	th:value="${camion.matricule}" />
-															</div>
-														</div>
+											<div align="center">
+											    <h2>Détail Camion</h2>
+    											<span>Matricule : </span><span th:text="${camion.matricule}"></span><br/>
+    											<span>Marque : </span><span th:text="${camion.marque}"></span><br/>
+    											<span>Age : </span><span th:text="${camion.age}"></span><br/>
+    											<span>Chauffeur : </span><span th:text="${camion.chauffeur.nom}"></span><br/>
 
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="Marque">Marque
-															</label>
-															<div class="col-md-6">
-																<input id="marque" name="marque" disabled="disabled"
-																	type="text" placeholder="marque"
-																	class="form-control input-md"
-																	th:value="${camion.marque}" />
-															</div>
-														</div>
-
-
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="age">Age</label>
-															<div class="col-md-6">
-																<input id="age" name="age" type="text"
-																	disabled="disabled" placeholder="age"
-																	class="form-control input-md"
-																	th:value="${camion.age}" />
-															</div>
-														</div>
-														
-														<!-- Text input-->
-														<div class="form-group">
-															<label class="col-md-4 control-label" for="age">Chauffeur</label>
-															<div class="col-md-6">
-																<input id="chauffeur" name="chauffeur" type="text"
-																	disabled="disabled" placeholder="chauffeur"
-																	class="form-control input-md"
-																	th:value="${camion.chauffeur.nom}" />
-															</div>
-														</div>
-
-													</fieldset>
-												</form>
+											</div>
 											
 											</div>
 											<div class="modal-footer">
