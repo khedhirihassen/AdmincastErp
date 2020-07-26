@@ -1,9 +1,13 @@
 package com.hassen.commerciale.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -22,6 +26,9 @@ public class Region {
 	
 	@NotBlank
 	private String description ;
+	
+	@OneToMany (mappedBy = "region")
+	private List<Marche> listMarche = new ArrayList<Marche>();
 
 	public Region() {
 		super();
@@ -58,6 +65,14 @@ public class Region {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Marche> getListMarche() {
+		return listMarche;
+	}
+
+	public void setListMarche(List<Marche> listMarche) {
+		this.listMarche = listMarche;
 	}
 	
 	
