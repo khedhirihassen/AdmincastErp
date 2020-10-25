@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Fournisseur</title>
+
+
+</head>
+
+<body>
+	<!-- START PAGE CONTENT-->
+	<div class="page-content fade-in-up" data-layout-fragment="content">
+		
+		<div class="page-heading">
+                <h1 class="page-title">Fournisseurs</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/}"><i class="ti-home font-20"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">Commercial</li>
+                    <li class="breadcrumb-item"><a th:href="@{/fournisseurs}">Fournisseurs</a></li>
+                </ol>
+         </div>
+            
+		<br></br>
+		
+		<div class="ibox">
+                    
+                    <div class="ibox-head">
+                        <div class="ibox-title">Modifier Fournisseur</div>
+                    </div>
+                    
+                    <div class="ibox-body">
+                           <form class="form-horizontal" id="form-sample-1" novalidate="novalidate" 
+                            action="#" th:action="@{/fournisseurs/update/{id}(id=${fournisseur.id})}" th:object="${fournisseur}" method="post">
+                            
+                            
+                            <div class="form-group row">
+                               
+                                <label class="col-sm-2 col-form-label">Code Fournisseur</label>
+                                <div class="col-sm-6"> 
+                                <input
+									type="text" th:field="*{code}" class="form-control" id="code"
+									placeholder="Code"> <span
+									th:if="${#fields.hasErrors('code')}" th:errors="*{code}"
+									class="text-danger"></span>
+                                
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="form-group row">
+                               
+                                <label class="col-sm-2 col-form-label">Nom</label>
+                                <div class="col-sm-6"> 
+                                <input
+									type="text" th:field="*{nom}" class="form-control" id="nom"
+									placeholder="Nom"> <span
+									th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"
+									class="text-danger"></span>
+                                
+                                </div>
+                                
+                            </div>
+                           
+                            <div class="form-group row">
+                               <label class="col-sm-2 col-form-label">Matricule Fiscale</label> 
+                               <div class="col-sm-6">
+                               <input
+									type="text" th:field="*{matriculeFiscale}" class="form-control" id="matriculeFiscale"
+									placeholder="Matricule Fiscale"> <span
+									th:if="${#fields.hasErrors('matriculeFiscale')}" th:errors="*{matriculeFiscale}"
+									class="text-danger"></span>
+								</div>
+                            </div>
+                           
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Adress</label>
+                                <div class="col-sm-6">
+                                <input
+									type="text" th:field="*{adress}" class="form-control" id="adress"
+									placeholder="Adress"> <span
+									th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"
+									class="text-danger"></span>
+								</div>
+                            </div>
+                           
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">N° Téléphone</label>
+                                <div class="col-sm-3">
+                                <input
+									type="text" th:field="*{mobile}" class="form-control" id="mobile"
+									placeholder="mobile"> <span
+									th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"
+									class="text-danger"></span>
+								</div>
+								
+								 <label class="col-form-label">N° Fax</label>
+                                <div class="col-sm-3">
+                                <input
+									type="text" th:field="*{fax}" class="form-control" id="fax"
+									placeholder="fax"> <span
+									th:if="${#fields.hasErrors('fax')}" th:errors="*{fax}"
+									class="text-danger"></span>
+								</div>
+                            </div>
+                            
+                            <div class="form-group row">
+                               <label class="col-sm-2 col-form-label">Representant</label> 
+                               <div class="col-sm-6">
+                               <input
+									type="text" th:field="*{representant}" class="form-control" id="representant"
+									placeholder="Representant"> <span
+									th:if="${#fields.hasErrors('representant')}" th:errors="*{representant}"
+									class="text-danger"></span>
+								</div>
+                            </div>
+                           
+                            <div class="form-group row">
+                                <div class="col-sm-10 ml-sm-auto">
+                                    <div class="text-right">
+                                        <button id="send" type="submit" class="btn btn-primary btn-air mr-2">Submit</button>
+                                        <a th:href="@{/fournisseurs}" class="btn btn-secondary">Cancel</a>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+		
+		
+	</div>
+
+
+</body>
+</html>

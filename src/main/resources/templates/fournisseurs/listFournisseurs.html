@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Fournisseurs</title>
+<style type="text/css">
+    span-view {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
+
+</head>
+
+<body>
+	<!-- START PAGE CONTENT-->
+	<div class="page-content fade-in-up" data-layout-fragment="content">
+		
+		<div class="page-heading">
+                <h1 class="page-title">Fournisseurs</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/}"><i class="ti-home font-20"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">Commercial</li>
+                    <li class="breadcrumb-item">Fournisseurs</li>
+                </ol>
+         </div>
+            
+		<br></br>
+		
+		<div class="ibox">
+			<div class="ibox-head">
+				<div class="ibox-title">Liste Fournisseurs</div>
+			</div>
+			<div class="ibox-body">
+				<a class="btn btn-rounded btn-primary btn-air"
+					th:href="@{fournisseurs/addFournisseur}">Ajouter Fournisseur</a> <br></br>
+				<table class="table table-striped table-bordered table-hover"
+					id="example-table" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Nom</th>
+							<th>Matricule Fournisseur</th>
+							<th>Adress</th>
+							<th>Mobile</th>
+							<th>Fax</th>
+							<th>Representant</th>
+							<th width="125px">Option</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Code</th>
+							<th>Nom</th>
+							<th>Matricule Fournisseur</th>
+							<th>Adress</th>
+							<th>Mobile</th>
+							<th>Fax</th>
+							<th>Representant</th>
+							<th width="125px">Option</th>
+						</tr>
+					</tfoot>
+					<tbody>
+
+
+						<tr th:each="fournisseur : ${fournisseurs}">
+							<td th:text="${fournisseur.code}"></td>
+							<td th:text="${fournisseur.nom}"></td>
+							<td th:text="${fournisseur.matriculeFiscale}"></td>
+							<td th:text="${fournisseur.adress}"></td>
+							<td th:text="${fournisseur.mobile}"></td>
+							<td th:text="${fournisseur.fax}"></td>
+							<td th:text="${fournisseur.representant}"></td>
+							<td>
+							
+							<a class="text-info mr-3 font-16 vBtn"
+								href="javascript:;" data-toggle="modal" data-target="#myModal"
+								th:attrappend="data-target=${fournisseur.id}"><i class="ti-eye"></i></a>
+								
+							<a class="text-primary mr-3 font-16" th:href="@{fournisseurs/edit/{id}(id=${fournisseur.id})}"
+								href="javascript:;"><i class="ti-pencil"></i></a>
+								
+							<a class="text-danger mr-3 font-16"
+								th:href="@{fournisseurs/delete/{id}(id=${fournisseur.id})}"
+								href="javascript:;" onclick="return confirm('Êtes-vous sûr de supprimer cet élément?');">
+								<i class="ti-trash ti-3x"></i></a>
+
+								<!--#Modal form for user View--> <!-- Modal -->
+								
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" 
+								aria-hidden="true" th:attrappend="id=${fournisseur.id}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Information fournisseur</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+											
+											<div align="center">
+											
+											    <h2>Détail fournisseur</h2>
+    											<span-view>Code : </span-view><span-view th:text="${fournisseur.code}"></span-view><br/>
+    											<span-view>Nom : </span-view><span-view th:text="${fournisseur.nom}"></span-view><br/>
+    											<span-view>Matricule Fiscale : </span-view><span-view th:text="${fournisseur.matriculeFiscale}"></span-view><br/>
+    											<span-view>Adress : </span-view><span-view th:text="${fournisseur.adress}"></span-view><br/>
+    											<span-view>Mobile : </span-view><span-view th:text="${fournisseur.mobile}"></span-view><br/>
+    											<span-view>Fax : </span-view><span-view th:text="${fournisseur.fax}"></span-view><br/>
+    											<span-view>Representant : </span-view><span-view th:text="${fournisseur.representant}"></span-view><br/>
+
+											</div>
+											
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--End view form--> 
+								
+						</td>
+						</tr>
+
+
+
+
+					</tbody>
+				</table>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+</body>
+</html>
