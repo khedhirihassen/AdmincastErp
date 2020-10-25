@@ -1,5 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
- <div id="navbar" data-th-fragment="navbar">
+<meta charset="UTF-8">
+<div id="navbar" data-th-fragment="navbar">
 <nav class="page-sidebar" id="sidebar">
 	<div id="sidebar-collapse">
 	
@@ -31,10 +32,10 @@
 					<li><a href="badges_progress.html">Badges &amp; Progress</a></li>
 				</ul></li>
 			<li><a href="javascript:;"><i
-					class="sidebar-item-icon fa fa-edit"></i> <span class="nav-label">Forms</span><i
+					class="sidebar-item-icon fa fa-edit"></i> <span class="nav-label">Depôt</span><i
 					class="fa fa-angle-left arrow"></i></a>
 				<ul class="nav-2-level collapse">
-					<li><a href="form_basic.html">Basic Forms</a></li>
+					<li><a th:href="@{/fournisseurs}">Fournisseurs</a></li>
 					<li><a href="form_advanced.html">Advanced Plugins</a></li>
 					<li><a href="form_masks.html">Form input masks</a></li>
 					<li><a href="form_validation.html">Form Validation</a></li>
